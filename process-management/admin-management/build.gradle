@@ -1,0 +1,27 @@
+// admin-management build.gradle
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+}
+
+dependencies {
+    implementation project(':common:core-service')
+    implementation project(':common:multitenant-service')
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.5'
+    implementation 'org.flywaydb:flyway-core:11.3.3'
+    runtimeOnly 'org.flywaydb:flyway-database-postgresql:11.3.3'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:3.4.3'
+    implementation 'org.springframework.data:spring-data-envers:4.0.0-M1'
+    implementation('org.hibernate:hibernate-envers:6.3.0.Final') {
+        exclude group: 'org.hibernate.orm', module: 'hibernate-core'
+    }
+}
+
+
+test {
+    useJUnitPlatform()
+}

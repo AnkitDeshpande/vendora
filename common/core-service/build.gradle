@@ -1,0 +1,28 @@
+// core build.gradle file for the project
+plugins {
+    id 'java-library'
+}
+
+tasks.named("bootJar") {
+    enabled = false
+}
+
+tasks.named("jar") {
+    enabled = true
+}
+
+dependencies {
+    api 'org.springframework.data:spring-data-envers:4.0.0-M1'
+    implementation 'io.jsonwebtoken:jjwt-api:0.12.6'
+    api('org.hibernate:hibernate-envers:6.3.0.Final') {
+        exclude group: 'org.hibernate.orm', module: 'hibernate-core'
+    }
+    implementation 'org.springframework.boot:spring-boot-starter-security:3.3.0'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.5'
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}

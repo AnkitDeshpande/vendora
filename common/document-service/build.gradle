@@ -1,0 +1,13 @@
+// document manager build.gradle file for the project
+plugins {
+    id 'application'
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}

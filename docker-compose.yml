@@ -1,0 +1,10 @@
+services:
+  rabbitmq:
+    container_name: vendora-rabbitmq  # Naming the container for easy reference
+    image: rabbitmq:4-management  # RabbitMQ image with management plugin
+    ports:
+      - "5555:5672"     # Mapping host port 5555 to container port 5672 (RabbitMQ default)
+      - "55555:15672"   # Mapping host port 55555 to container port 15672 (Management UI)
+    environment:
+      RABBITMQ_DEFAULT_USER: vendora  # RabbitMQ username from environment variable
+      RABBITMQ_DEFAULT_PASS: vendora@123  # RabbitMQ password from environment variable
