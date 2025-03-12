@@ -19,6 +19,7 @@ dependencies {
     implementation 'io.jsonwebtoken:jjwt-impl:0.12.6'
     implementation 'io.jsonwebtoken:jjwt-jackson:0.12.6'
     implementation 'org.springframework.data:spring-data-envers:4.0.0-M1'
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:4.2.0'
     implementation('org.hibernate:hibernate-envers:6.3.0.Final') {
         exclude group: 'org.hibernate.orm', module: 'hibernate-core'
     }

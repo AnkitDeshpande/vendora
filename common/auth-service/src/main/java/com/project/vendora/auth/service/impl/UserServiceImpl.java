@@ -1,7 +1,9 @@
 package com.project.vendora.auth.service.impl;
 
+import com.project.vendora.auth.model.request.EmailDetails;
 import com.project.vendora.auth.model.request.PasswordRequest;
 import com.project.vendora.auth.model.request.SignUpRequest;
+import com.project.vendora.auth.service.NotificationService;
 import com.project.vendora.auth.service.UserService;
 import com.project.vendora.core.constant.ErrorMessage;
 import com.project.vendora.core.entity.Address;
@@ -29,6 +31,8 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     private final PasswordEncoder passwordEncoder;
+
+    private final NotificationService notificationService;
 
     private final Mapper mapper = new Mapper();
 
@@ -107,13 +111,13 @@ public class UserServiceImpl implements UserService {
             }
         }
 
-        /*if (Objects.isNull(signUpRequest.getId())) {
-            emailService.sendActivationEmail(EmailDetails.builder()
-                    .messageBody(MailConfigEnum.REGISTRATION_SUCCESS.getValue())
+        if (Objects.isNull(signUpRequest.getId())) {
+            notificationService.sendActivationEmail(EmailDetails.builder()
+                    .messageBody("Your registration was successful.")
                     .recipient(signUpRequest.getEmail())
-                    .subject(MailConfigEnum.REGISTRATION_SUCCESS.name())
+                    .subject("Registration Success")
                     .build());
-        }*/
+        }
 
         return userRepository.save(savedUser);
     }
