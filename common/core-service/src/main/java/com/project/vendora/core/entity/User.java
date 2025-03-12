@@ -28,7 +28,7 @@ public class User extends AuditCommonBaseModel implements UserDetails, TenantAwa
     private String username;
 
     @JsonIgnore
-    @Column(name = "password", nullable = false, length = 100)
+    @Column(name = "password", length = 100)
     private String password;
 
     @Column(name = "email", nullable = false, unique = true, length = 100)

@@ -1,5 +1,6 @@
 package com.project.vendora.auth.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,11 +16,11 @@ import java.util.Set;
 public class SignUpRequestDto {
     private Long id;
     private String username;
-    private String password;
     private String email;
     private String firstName;
     private String lastName;
     private String phoneNumber;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-mm-yyyy")
     private Date dateOfBirth;
     private String profilePictureUrl;
     private Set<AddressRequestDto> addresses;

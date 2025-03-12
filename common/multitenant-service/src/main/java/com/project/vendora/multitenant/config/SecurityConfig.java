@@ -28,7 +28,7 @@ import java.util.List;
 public class SecurityConfig {
 
     private static final String[] WHITE_LIST_API = {"/api/v1/auth/**", "/swagger-ui/**", "/v3/api-docs/**", "/error",
-            "/websocket", "/websocket/**"};
+            "/websocket", "/websocket/**", "/api/v1/notification/send-activation-email"};
 
     private final JwtFilter jwtAuthFilter;
 
@@ -53,7 +53,8 @@ public class SecurityConfig {
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(resetDefaultConfig, UsernamePasswordAuthenticationFilter.class)
+                .addFilterAfter(jwtAuthFilter, ResetDefaultConfig.class)
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .formLogin(AbstractHttpConfigurer::disable);
 

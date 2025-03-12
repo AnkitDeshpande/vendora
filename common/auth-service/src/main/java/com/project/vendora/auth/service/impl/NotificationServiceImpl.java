@@ -14,6 +14,7 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     public void sendActivationEmail(EmailDetails emailDetails) {
-        emailClient.sendEmail(emailDetails);
+        String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36";
+        emailClient.sendEmail(userAgent,emailDetails);
     }
 }

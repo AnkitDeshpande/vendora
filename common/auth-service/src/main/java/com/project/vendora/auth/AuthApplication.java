@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @ConfigurationPropertiesScan
 @SpringBootApplication
-@EnableFeignClients
+@EnableFeignClients(basePackages = "com.project.vendora")
 @ComponentScan(basePackages = "com.project.vendora")
 @EnableJpaRepositories(basePackages = "com.project.vendora")
 @EntityScan(basePackages = "com.project.vendora")
